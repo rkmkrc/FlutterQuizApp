@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Screens/Login/components/background.dart';
 import 'package:flutter_quiz_app/Screens/Login/components/text_field_container.dart';
+import 'package:flutter_quiz_app/Screens/Question/questions_screen.dart';
 import 'package:flutter_quiz_app/Screens/Signup/signup_screen.dart';
 import 'package:flutter_quiz_app/components/already_have_an_account_check.dart';
 import 'package:flutter_quiz_app/components/rounded_button.dart';
@@ -45,7 +46,16 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "Giriş Yap",
-              press: () {},
+               press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {                        
+                      return QuestionsScreen();    // For testing purposes, later should be changed.
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(height: size.height * 0.015),
             AlreadyHaveAnAccountCheck(
