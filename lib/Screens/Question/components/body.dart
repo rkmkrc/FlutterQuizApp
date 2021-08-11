@@ -31,16 +31,16 @@ Widget buildQuestion({required Question question}) => Column(
           image: AssetImage("assets/questions/testIcon.png"),
         ),
         const SizedBox(height: 32),
-        buildAnswer(question.options[0]),
-        buildAnswer(question.options[1]),
-        buildAnswer(question.options[2]),
-        buildAnswer(question.options[3]),
+        Expanded(
+          child: OptionsWidget(
+            question: question,
+            onClickedOption: onClickedOption,
+          ),
+        ),
       ],
     );
 
-
 Widget buildAnswer(Option option) => Container(
-      
       height: 50,
       child: Row(
         children: [

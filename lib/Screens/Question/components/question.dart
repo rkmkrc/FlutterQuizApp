@@ -8,13 +8,13 @@ class Question{
   final String imageUrl;
   final List<Option> options;
   bool isLocked;
- // Option selectedOption;
+  Option selectedOption;
 
   Question({
     required this.text,
     required this.imageUrl,
     required this.options,
     this.isLocked = false,
-  //  required this.selectedOption,
+    required this.selectedOption,
   });
 }
