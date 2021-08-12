@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/course.dart';
+import 'package:flutter_quiz_app/Screens/Tests/tests_page.dart';
 import 'package:flutter_quiz_app/data/courses.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,6 +12,9 @@ class CoursesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => TestsScreen(course: course),
+        )),
         child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(

@@ -15,7 +15,7 @@ final courses = <Course>[
     courseName: "Fen Bilimleri",
     imageUrl: "assets/questions/testIcon.png",
     testList: tests,
-    courseIcon: FontAwesomeIcons.rocket,
+    courseIcon: FontAwesomeIcons.flask,
     backgroundColor: Colors.orange
   ),
   Course(
