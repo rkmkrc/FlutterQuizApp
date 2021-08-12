@@ -9,29 +9,34 @@ final courses = <Course>[
     imageUrl: "assets/questions/testIcon.png",
     testList: tests,
     courseIcon: FontAwesomeIcons.squareRootAlt,
+    backgroundColor: Colors.blue,
   ),
   Course(
     courseName: "Fen Bilimleri",
     imageUrl: "assets/questions/testIcon.png",
     testList: tests,
-    courseIcon: FontAwesomeIcons.squareRootAlt,
+    courseIcon: FontAwesomeIcons.rocket,
+    backgroundColor: Colors.orange
   ),
   Course(
     courseName: "Türkçe",
     imageUrl: "assets/questions/testIcon.png",
     testList: tests,
-    courseIcon: FontAwesomeIcons.squareRootAlt,
+    courseIcon: FontAwesomeIcons.book,
+    backgroundColor: Colors.purple,
   ),
   Course(
     courseName: "Sosyal Bilimler",
     imageUrl: "assets/questions/testIcon.png",
     testList: tests,
-    courseIcon: FontAwesomeIcons.squareRootAlt,
+    courseIcon: FontAwesomeIcons.mountain,
+    backgroundColor: Colors.green
   ),
   Course(
     courseName: "İngilizce",
     imageUrl: "assets/questions/testIcon.png",
     testList: tests,
-    courseIcon: FontAwesomeIcons.squareRootAlt,
+    courseIcon: FontAwesomeIcons.language,
+    backgroundColor: Colors.red,
   ),
 ];
