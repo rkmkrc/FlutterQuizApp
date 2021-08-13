@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz_app/Classes/course.dart';
-import 'package:flutter_quiz_app/Screens/Login/login_screen.dart';
-import 'package:flutter_quiz_app/Screens/Signup/components/social_icons.dart';
-import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_quiz_app/Screens/Widgets/courses_widget.dart';
-import 'package:flutter_quiz_app/constants.dart';
 import 'package:flutter_quiz_app/data/courses.dart';
-import 'package:flutter_quiz_app/data/tests.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -50,7 +43,7 @@ class Body extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           children: [
             SizedBox(
-              height: 8,
+              height: 0,
             ),
             buildCategories(),
           ],
@@ -58,17 +51,16 @@ class Body extends StatelessWidget {
       );
 }
 
-buildCategories() => Flexible(              //Flexible arranges automatically category widgets size. At least I hope :)
-      child: Container(
-          height: 400,
-          child: GridView.count(
-            crossAxisCount: 2,
-            childAspectRatio: 3 / 3,
-            crossAxisSpacing: 9,
-            mainAxisSpacing: 9,
-            children:
-                courses.map((course) => CoursesWidget(course: course)).toList(),
-          ),
+buildCategories() => Container(
+ 
+      height: 480,                                        // Must be arranged according to Size parameter. !!
+      child: GridView.count(
+        crossAxisCount: 2,
+        childAspectRatio: 3 / 3,
+        crossAxisSpacing: 9,
+        mainAxisSpacing: 9,
+        children:
+            courses.map((course) => CoursesWidget(course: course)).toList(),    // instead of courses, user.courses !!
       ),
     );
 

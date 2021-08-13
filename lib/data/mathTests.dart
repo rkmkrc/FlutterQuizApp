@@ -1,44 +1,52 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/data/questions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
-final tests = <Test>[
+final mathTests = <Test>[
   Test(
     questions: questions,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/physics.png',
     testName: 'Üslü Sayılar',
-    backgroundColor: Colors.blue,
-    icon: FontAwesomeIcons.rocket,
-    description: 'Practice questions from various chapters in physics', 
+    backgroundColor: Colors.blue.shade500,
+    icon: FontAwesomeIcons.superscript,
+    description: 'Practice questions from various chapters in physics',
+    leftOfTestButtonColorForTest: Colors.indigo.shade900,
+    rightOfTestButtonColorForTest: Colors.blue.shade400,
   ),
   Test(
     questions: questions,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/chemistry.png',
     testName: 'Üçgenler',
-    backgroundColor: Colors.orange,
-    icon: FontAwesomeIcons.atom,
+    backgroundColor: Colors.blue.shade500,
+    icon: CupertinoIcons.triangle_fill,
     description: 'Practice questions from various chapters in chemistry',
+    leftOfTestButtonColorForTest: Colors.indigo.shade900,
+    rightOfTestButtonColorForTest: Colors.blue.shade400,
   ),
   Test(
     questions: questions,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/maths.png',
     testName: 'Köklü Sayılar',
-    backgroundColor: Colors.purple,
+    backgroundColor: Colors.blue.shade500,
     icon: FontAwesomeIcons.squareRootAlt,
     description: 'Practice questions from various chapters in maths',
+    leftOfTestButtonColorForTest: Colors.indigo.shade900,
+    rightOfTestButtonColorForTest: Colors.blue.shade400,
   ),
   Test(
     questions: questions,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/biology.png',
     testName: 'Faktöriyel',
-    backgroundColor: Colors.lightBlue,
-    icon: FontAwesomeIcons.dna,
+    backgroundColor: Colors.blue.shade500,
+    icon: FontAwesomeIcons.exclamation,
     description: 'Practice questions from various chapters in biology',
+    leftOfTestButtonColorForTest: Colors.indigo.shade900,
+    rightOfTestButtonColorForTest: Colors.blue.shade400,
   ),
 ];

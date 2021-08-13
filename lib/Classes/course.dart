@@ -7,6 +7,8 @@ class Course{
   final String imageUrl;
   final List<Test> testList;
   final Color backgroundColor;
+  final Color leftOfAppBarColorForCourse;
+  final Color rightOfAppBarColorForCourse;
   
   Course({
     required this.courseName,
@@ -14,5 +16,7 @@ class Course{
     required this.imageUrl,
     required this.testList,
     required this.backgroundColor,
+    required this.leftOfAppBarColorForCourse, 
+    required this.rightOfAppBarColorForCourse, 
   });
 }

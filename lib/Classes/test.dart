@@ -12,8 +12,10 @@ class Test{
   final IconData icon;
   final List<Question> questions;
   final String imageUrl;
+  final Color leftOfTestButtonColorForTest;
+  final Color rightOfTestButtonColorForTest;
 
-  Test({
+  Test( {
     required this.testName,
     required this.parentCourseOfTest,
     this.description = '',
@@ -21,5 +23,8 @@ class Test{
     required this.questions,
     this.icon = FontAwesomeIcons.question,
     required this.imageUrl,
+    required this.leftOfTestButtonColorForTest, 
+    required this.rightOfTestButtonColorForTest,
+    
   });
 }

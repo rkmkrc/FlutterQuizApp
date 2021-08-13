@@ -1,30 +1,32 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz_app/Classes/course.dart';
-import 'package:flutter_quiz_app/Screens/Tests/tests_page.dart';
+import 'package:flutter_quiz_app/Classes/test.dart';
+import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CoursesWidget extends StatelessWidget {
-  final Course course;
-
-  const CoursesWidget({Key? key, required this.course}) : super(key: key);
+class TestsWidget extends StatelessWidget {
+  final Test test;
+  const TestsWidget({ Key? key, required this.test }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TestsScreen(course: course),
+          builder: (context) => WelcomeScreen(),
         )),
         child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: course.backgroundColor,
-            borderRadius: BorderRadius.circular(15),
+            gradient: LinearGradient(
+                colors: [test.leftOfTestButtonColorForTest, test.rightOfTestButtonColorForTest],    
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              ),
+            borderRadius: BorderRadius.circular(100),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FaIcon(
-                course.courseIcon,
+                test.icon,
                 color: Colors.white,
                 size: 36,
               ),
@@ -32,7 +34,7 @@ class CoursesWidget extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                course.courseName,
+                test.testName,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -45,3 +47,4 @@ class CoursesWidget extends StatelessWidget {
         ),
       );
 }
+
