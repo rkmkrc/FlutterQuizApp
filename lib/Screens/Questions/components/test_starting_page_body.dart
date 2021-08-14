@@ -20,23 +20,28 @@ class Body extends StatelessWidget {
           end: Alignment.topCenter,
         ),
       ),
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(15),
-            alignment: Alignment.topCenter,
-            child: Text(
-              test.testName,
-              style: GoogleFonts.comfortaa(
-                textStyle: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+        children: [
+          Column(
+            children: <Widget>[
+              SizedBox(height: size.height * 0.03,),
+              Container(
+                margin: EdgeInsets.all(15),
+                alignment: Alignment.topCenter,
+                child: Text(
+                  test.testName,
+                  style: GoogleFonts.comfortaa(
+                    textStyle: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ],
       ),
