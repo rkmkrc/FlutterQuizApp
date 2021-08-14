@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
+import 'package:flutter_quiz_app/Screens/Courses/courses_screen.dart';
 import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_quiz_app/components/rounded_button.dart';
 import 'package:flutter_quiz_app/components/rounded_start_button.dart';
@@ -86,8 +87,19 @@ class Body extends StatelessWidget {
               SizedBox(
                 height: size.height * 0.05,
               ),
-              RoundedStartButton(text: "BAŞLA"),
-              
+              RoundedStartButton(
+                text: "BAŞLAT",
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return CoursesScreen(); // For testing purposes, later should be changed.
+                      },
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ],
