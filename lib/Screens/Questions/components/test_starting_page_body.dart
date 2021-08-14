@@ -1,5 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
+import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
+import 'package:flutter_quiz_app/components/rounded_button.dart';
+import 'package:flutter_quiz_app/components/rounded_start_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatelessWidget {
@@ -26,7 +32,9 @@ class Body extends StatelessWidget {
         children: [
           Column(
             children: <Widget>[
-              SizedBox(height: size.height * 0.03,),
+              SizedBox(
+                height: size.height * 0.20,
+              ),
               Container(
                 margin: EdgeInsets.all(15),
                 alignment: Alignment.topCenter,
@@ -34,13 +42,52 @@ class Body extends StatelessWidget {
                   test.testName,
                   style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(
-                      fontSize: 36,
+                      fontSize: 42,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
                 ),
               ),
+              Text(
+                test.testGrade + ". Sınıf",
+                style: GoogleFonts.comfortaa(
+                  textStyle: TextStyle(
+                    fontSize: 22,
+                    //fontStyle: FontStyle.italic,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.25,
+              ),
+              Icon(
+                Icons.border_color_rounded,
+                color: Colors.white,
+                size: 36,
+              ),
+              SizedBox(
+                height: size.height * 0.035,
+              ),
+              Text(
+                "Bu testte " +
+                    test.questions.length.toString() +
+                    " soru var." +
+                    "\n\t\t\t\t\t  Hazır mısın?",
+                style: GoogleFonts.comfortaa(
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    //fontStyle: FontStyle.italic,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.05,
+              ),
+              RoundedStartButton(text: "BAŞLA"),
+              
             ],
           ),
         ],

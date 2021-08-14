@@ -8,6 +8,7 @@ class Test{
   final String testName;
   final String parentCourseOfTest;
   final String description;
+  final String testGrade;
   final Color backgroundColor;
   final IconData icon;
   final List<Question> questions;
@@ -15,10 +16,11 @@ class Test{
   final Color leftOfTestButtonColorForTest;
   final Color rightOfTestButtonColorForTest;
 
-  Test( {
+  Test(  {
     required this.testName,
     required this.parentCourseOfTest,
-    this.description = '',
+    this.description = "Bu test üçgenler sorularından oluşmaktadır.",
+    required this.testGrade,
     this.backgroundColor = Colors.orange,
     required this.questions,
     this.icon = FontAwesomeIcons.question,
