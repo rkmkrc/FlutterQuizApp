@@ -7,7 +7,6 @@ import 'package:flutter_quiz_app/components/already_have_an_account_check.dart';
 import 'package:flutter_quiz_app/components/rounded_button.dart';
 import 'package:flutter_quiz_app/components/rounded_input_field.dart';
 import 'package:flutter_quiz_app/components/rounded_password_field.dart';
-import 'package:flutter_quiz_app/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {

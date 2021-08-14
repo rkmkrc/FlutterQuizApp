@@ -16,8 +16,8 @@ class Body extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(16),
               alignment: Alignment.centerLeft,
-              child: buildWelcome("Erkam"),
-            ), // user.userName should be.
+              child: buildWelcome("Erkam"),               // user.userName should be.
+            ),
           ),
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -35,7 +35,7 @@ class Body extends StatelessWidget {
             ),
             SizedBox(
               width: 12,
-            ),
+            ),      
           ],
         ),
         body: ListView(
@@ -52,15 +52,16 @@ class Body extends StatelessWidget {
 }
 
 buildCategories() => Container(
- 
-      height: 480,                                        // Must be arranged according to Size parameter. !!
+      height: 520, // Must be arranged according to Size parameter. !!
       child: GridView.count(
+        physics: BouncingScrollPhysics(),                       // To bounce back from edge.
         crossAxisCount: 2,
         childAspectRatio: 3 / 3,
         crossAxisSpacing: 9,
         mainAxisSpacing: 9,
-        children:
-            courses.map((course) => CoursesWidget(course: course)).toList(),    // instead of courses, user.courses !!
+        children: courses
+            .map((course) => CoursesWidget(course: course))
+            .toList(), // instead of courses, user.courses !!
       ),
     );
 
@@ -74,6 +75,22 @@ buildWelcome(String userName) => Column(
         ),
         Text(
           userName,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+
+buildUserXP(String userName) => Column(
+      // There must be user later handle it.
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        
+        Text(
+          "100 XP",   //user.points
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,

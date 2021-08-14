@@ -3,7 +3,6 @@ import 'package:flutter_quiz_app/Classes/course.dart';
 import 'package:flutter_quiz_app/Screens/Courses/components/body.dart';
 import 'package:flutter_quiz_app/Screens/Widgets/tests_widget.dart';
 import 'package:flutter_quiz_app/data/mathTests.dart';
-import 'package:flutter_quiz_app/data/scienceTests.dart';
 
 class Body extends StatelessWidget {
   final Course course;
@@ -61,6 +60,7 @@ class Body extends StatelessWidget {
 buildTestsCategory() => Container(
       height: 480, // Must be arranged according to Size parameter. !!
       child: GridView.count(
+        physics: BouncingScrollPhysics(),
         crossAxisCount: 2,
         childAspectRatio: 3 / 3,
         crossAxisSpacing: 18,

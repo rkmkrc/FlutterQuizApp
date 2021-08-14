@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
-import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
+import 'package:flutter_quiz_app/Screens/Questions/test_starting_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TestsWidget extends StatelessWidget {
@@ -10,7 +10,7 @@ class TestsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => WelcomeScreen(),
+          builder: (context) => TestStartingPage(startingTest: test),
         )),
         child: Container(
           padding: EdgeInsets.all(12),
