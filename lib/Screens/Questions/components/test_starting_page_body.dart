@@ -2,11 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
-import 'package:flutter_quiz_app/Screens/Courses/courses_screen.dart';
-import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
-import 'package:flutter_quiz_app/components/rounded_button.dart';
+import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/quiz_with_questions_screen.dart';
 import 'package:flutter_quiz_app/components/rounded_start_button.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatelessWidget {
@@ -94,7 +91,7 @@ class Body extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return CoursesScreen(); // For testing purposes, later should be changed.
+                        return QuizWithQuestionsScreen(test: test); // For testing purposes, later should be changed.
                       },
                     ),
                   );
