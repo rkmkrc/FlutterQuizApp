@@ -24,15 +24,16 @@ class TimerBar extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(50),
       ),
-      child: GetBuilder<QuestionController>( 
-        init: QuestionController(),
+      child: GetBuilder<QuestionController>(
+        init: QuestionController(durationForTest: test.durationForTest),
         builder: (controller) {
           print(controller.animation.value);
           return Stack(
             children: [
               LayoutBuilder(
                 builder: (context, constraints) => Container(
-                  width: constraints.maxWidth * controller.animation.value,   // Moves the bar forward.
+                  width: constraints.maxWidth *
+                      controller.animation.value, // Moves the bar forward.
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -49,12 +50,16 @@ class TimerBar extends StatelessWidget {
               Positioned.fill(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding / 2,    // For elements that inside the bar.
+                    horizontal: kDefaultPadding /
+                        2, // For elements that inside the bar.
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("18 saniye"),
+                      Text(
+                         "${test.durationForTest - (controller.animation.value * test.durationForTest).round()} saniye",
+                        style: TextStyle(color: Colors.white),
+                      ),
                       Icon(
                         Icons.timer_sharp,
                         color: kSecondaryColor,
