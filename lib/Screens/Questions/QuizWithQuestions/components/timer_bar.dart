@@ -58,7 +58,7 @@ class TimerBar extends StatelessWidget {
                     children: [
                       Text(
                          "${test.durationForTest - (controller.animation.value * test.durationForTest).round()} saniye",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white70),
                       ),
                       Icon(
                         Icons.timer_sharp,

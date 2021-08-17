@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
+import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/components/question_numbers_widget.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/components/timer_bar.dart';
 import 'package:flutter_quiz_app/constants.dart';
+import 'package:flutter_quiz_app/data/questions.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
@@ -23,6 +25,14 @@ class Body extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
               child: Column(
                 children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: QuestionNumbersWidget(
+                      questionsList: test.questions,
+                      currentQuestion: test.questions[1],           // Update currentQue. all the time to change highlighted num.
+                    ),
+                  ),
+                  SizedBox(height: 0),
                   TimerBar(test: test),
                 ],
               ),
