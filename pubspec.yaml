@@ -55,7 +55,8 @@ flutter:
      - assets/images/
      - assets/icons/
      - assets/questions/
-
+     - assets/questions/1.0x/uslu4.svg
+     - assets/questions/1.0x/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

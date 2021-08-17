@@ -4,7 +4,7 @@ import 'package:flutter_quiz_app/Classes/question.dart';
 
 final questions = [
   Question(
-    imageUrl: 'assets/questions/exampleQuestion.png',
+    imageUrl: 'assets/questions/1.0x/uslu1.png',
     options: [
       Option(code: 'A', text: 'Earth', isCorrect: false),
       Option(code: 'B', text: 'Venus', isCorrect: true),
@@ -14,7 +14,7 @@ final questions = [
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
-    imageUrl: 'assets/questions/exampleQuestion.png',
+    imageUrl: 'assets/questions/1.0x/uslu2.png',
     options: [
       Option(code: 'A', text: '1', isCorrect: false),
       Option(code: 'B', text: '2', isCorrect: false),
@@ -24,7 +24,7 @@ final questions = [
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
-    imageUrl: 'assets/questions/exampleQuestion.png',
+    imageUrl: 'assets/questions/1.0x/uslu3.png',
     options: [
       Option(code: 'A', text: 'N', isCorrect: false),
       Option(code: 'B', text: 'S', isCorrect: false),
@@ -34,7 +34,7 @@ final questions = [
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
-    imageUrl: 'assets/questions/exampleQuestion.png',
+    imageUrl: 'assets/questions/1.0x/uslu4.png',
     options: [
       Option(code: 'A', text: '4.48 Psychosis', isCorrect: true),
       Option(code: 'B', text: 'Hamilton', isCorrect: false),
@@ -44,7 +44,7 @@ final questions = [
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
-    imageUrl: 'assets/questions/exampleQuestion.png',
+    imageUrl: 'assets/questions/1.0x/uslu5.png',
     options: [
       Option(code: 'A', text: '2005', isCorrect: false),
       Option(code: 'B', text: '2008', isCorrect: false),
@@ -77,4 +77,15 @@ final questions = [
     ],
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
+  Question(
+    imageUrl: 'assets/questions/exampleQuestion.png',
+    options: [
+      Option(code: 'A', text: 'Brazil', isCorrect: false),
+      Option(code: 'B', text: 'Germany', isCorrect: false),
+      Option(code: 'C', text: 'Italy', isCorrect: false),
+      Option(code: 'D', text: 'Uruguay', isCorrect: true),
+    ],
+    selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
+  ),
+  
 ];

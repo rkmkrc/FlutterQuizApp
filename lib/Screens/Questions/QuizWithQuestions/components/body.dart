@@ -34,6 +34,7 @@ class Body extends StatelessWidget {
                   ),
                   SizedBox(height: 0),
                   TimerBar(test: test),
+                  Image.asset(test.questions[2].imageUrl,),
                 ],
               ),
             ),
