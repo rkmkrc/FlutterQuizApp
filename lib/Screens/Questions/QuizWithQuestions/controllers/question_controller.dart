@@ -1,5 +1,9 @@
 import 'package:flutter/animation.dart';
+import 'package:flutter_quiz_app/Classes/option.dart';
+import 'package:flutter_quiz_app/Classes/question.dart';
+import 'package:flutter_quiz_app/data/questions.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:flutter_quiz_app/data/mathTests.dart';
 
 
 class QuestionController extends GetxController
@@ -7,10 +11,13 @@ class QuestionController extends GetxController
   late AnimationController _animationController;
   late Animation _animation;
   final int durationForTest;
+  final List<Question> questions;
 
-  QuestionController({required this.durationForTest});
+  QuestionController( {required this.questions,required this.durationForTest});
 
   Animation get animation => this._animation;
+
+  List<Question> get getQuestions => this.questions;     // user.....questions in fact
 
   @override
   void onInit() {
