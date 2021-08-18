@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/question.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/components/option_card_builder.dart';
+import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/controllers/question_controller.dart';
 import 'package:flutter_quiz_app/constants.dart';
+import 'package:get/get.dart';
 
 class QuizScreenQuestionCardBuilder extends StatelessWidget {
   const QuizScreenQuestionCardBuilder({
@@ -18,6 +20,8 @@ class QuizScreenQuestionCardBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    QuestionController _controller = Get.put(QuestionController(
+        durationForTest: test.durationForTest, questions: test.questions));
     return Container(
       margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
       padding: EdgeInsets.all(kDefaultPadding),
@@ -42,7 +46,7 @@ class QuizScreenQuestionCardBuilder extends StatelessWidget {
               size: size,
               text: question.options[index].text,
               code: question.options[index].code,
-              press: () {},
+              press: () => _controller.checkAnswer(question, index), test: test, index: index,
             ),
           ),
         ],

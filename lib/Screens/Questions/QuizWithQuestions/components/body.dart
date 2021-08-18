@@ -44,6 +44,8 @@ class Body extends StatelessWidget {
                 SizedBox(height: 15),
                 Expanded(
                     child: PageView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _questionController.pageController,
                       itemCount: _questionController.questions.length,
                   itemBuilder: (context, index) =>
                       QuizScreenQuestionCardBuilder(

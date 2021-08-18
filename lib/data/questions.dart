@@ -11,6 +11,7 @@ final questions = [
       Option(code: 'C', text: 'Jupiter', isCorrect: false),
   //    Option(code: 'D', text: 'Saturn', isCorrect: false),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -21,6 +22,7 @@ final questions = [
       Option(code: 'C', text: '5', isCorrect: false),
    //   Option(code: 'D', text: '3', isCorrect: true),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -31,6 +33,7 @@ final questions = [
       Option(code: 'C', text: 'P', isCorrect: false),
   //    Option(code: 'D', text: 'K', isCorrect: true),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -41,6 +44,7 @@ final questions = [
       Option(code: 'C', text: "Much Ado About Nothing", isCorrect: false),
  //     Option(code: 'D', text: "The Birthday Party", isCorrect: false),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -51,6 +55,7 @@ final questions = [
       Option(code: 'C', text: '2007', isCorrect: true),
  //     Option(code: 'D', text: '2006', isCorrect: false),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -65,6 +70,7 @@ final questions = [
         isCorrect: false,
       ),*/
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -75,6 +81,7 @@ final questions = [
       Option(code: 'C', text: 'Italy', isCorrect: false),
 //      Option(code: 'D', text: 'Uruguay', isCorrect: true),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   Question(
@@ -85,6 +92,7 @@ final questions = [
       Option(code: 'C', text: 'Italy', isCorrect: false),
 //      Option(code: 'D', text: 'Uruguay', isCorrect: true),
     ],
+    answerIndex: 2,
     selectedOption: Option(text: "SelectedOptionText", code: 'X', isCorrect: false),
   ),
   
