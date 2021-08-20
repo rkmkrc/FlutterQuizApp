@@ -50,7 +50,7 @@ final mathTests = <Test>[
     imageUrl: 'assets/biology.png',
     testName: 'Faktöriyel',
     testGrade: "7",
-    durationForTest: 30,
+    durationForTest: 10,
     backgroundColor: Colors.blue.shade500,
     icon: FontAwesomeIcons.exclamation,
     description: 'Practice questions from various chapters in biology',

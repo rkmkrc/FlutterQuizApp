@@ -1,6 +1,9 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/question.dart';
+import 'package:flutter_quiz_app/Screens/Login/login_screen.dart';
+import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -45,11 +48,20 @@ class QuestionController extends GetxController
       ..addListener(() {
         update();
       });
-    _animationController.forward();
+    _animationController.forward().whenComplete(() => {
+        Get.to(() => WelcomeScreen())
+    });
 
     _pageController = PageController();
 
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    _animationController.dispose();
+    _pageController.dispose();
   }
 
   void checkAnswer(Question question, int selectedIndex) {
@@ -58,23 +70,27 @@ class QuestionController extends GetxController
     _selectedAns = selectedIndex;
 
     if (_correctAns == _selectedAns) _numOfCorrectAns++;
-    _animationController.stop();
+  //  _animationController.stop();
     update();
 
-    Future.delayed(Duration(milliseconds: 850), () {
+    Future.delayed(Duration(milliseconds: 650), () {
       nextQuestion();
     });
   }
 
-
-  
-  void nextQuestion(){
-    if(_questionNumber.value != questions.length){
+  void nextQuestion() {
+    if (_questionNumber.value != questions.length) {
       _isAnswered = false;
       _pageController.nextPage(
           duration: Duration(milliseconds: 250), curve: Curves.ease);
-        //  _animationController.reset();   // Time does not supposed to be reset itself.
-          _animationController.forward();
+     // _animationController.reset(); // Time does not supposed to be reset itself.
+     // _animationController.forward(); // Commented in order to go to the score screen whenever time is up.
+    } else {
+      Get.to(() => WelcomeScreen());
     }
+  }
+
+  void updateQuestionNumber(int index){
+    _questionNumber.value = index + 1 ;
   }
 }

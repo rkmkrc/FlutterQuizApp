@@ -30,11 +30,11 @@ class Body extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 15),
-                  child: QuestionNumbersWidget(
+                  child: Obx( () => QuestionNumbersWidget(
                     questionsList: test.questions,
                     currentQuestion: test.questions[
-                        2], // Update currentQue. all the time to change highlighted num.
-                  ),
+                        _questionController.questionNumber.value-1], // Update currentQue. all the time to change highlighted num.
+                  ),)
                 ),
                 Padding(
                   padding:
@@ -46,6 +46,7 @@ class Body extends StatelessWidget {
                     child: PageView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       controller: _questionController.pageController,
+                      onPageChanged: _questionController.updateQuestionNumber,
                       itemCount: _questionController.questions.length,
                   itemBuilder: (context, index) =>
                       QuizScreenQuestionCardBuilder(
