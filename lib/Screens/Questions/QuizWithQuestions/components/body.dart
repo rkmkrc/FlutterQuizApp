@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     QuestionController _questionController = Get.put(QuestionController(
-        questions: test.questions, durationForTest: test.durationForTest));
+        questions: test.questions, test: test));
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,

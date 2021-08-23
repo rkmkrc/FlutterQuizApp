@@ -21,7 +21,7 @@ class QuizScreenQuestionCardBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     QuestionController _controller = Get.put(QuestionController(
-        durationForTest: test.durationForTest, questions: test.questions));
+        test: test, questions: test.questions));
     return Container(
       margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
       padding: EdgeInsets.all(kDefaultPadding),
