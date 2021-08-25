@@ -8,6 +8,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
+    Size size = MediaQuery.of(context).size;
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
         appBar: AppBar(
@@ -18,14 +19,15 @@ class Body extends StatelessWidget {
             preferredSize: Size.fromHeight(50),
             child: Row(
               children: [
+                SizedBox(width: 10),
                 CircleAvatar(
-                  radius: 40,
+                  radius: size.height * 0.035,
                   backgroundImage: NetworkImage(user!.photoURL!),
                   ),
                 Container(
                   padding: EdgeInsets.all(16),
                   alignment: Alignment.centerLeft,
-                  child: buildWelcome("Erkam"),               // user.userName should be.
+                  child: buildWelcome(user.displayName.toString()),               // user.userName should be.
                 ),
               ],
             ),
