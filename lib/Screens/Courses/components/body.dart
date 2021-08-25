@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Screens/Widgets/courses_widget.dart';
 import 'package:flutter_quiz_app/data/courses.dart';
@@ -6,17 +7,27 @@ class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context){
+    final user = FirebaseAuth.instance.currentUser;
+    return Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.menu),
           elevation: 0,
           title: Text("7. Sınıf Oyunları"),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(50),
-            child: Container(
-              padding: EdgeInsets.all(16),
-              alignment: Alignment.centerLeft,
-              child: buildWelcome("Erkam"),               // user.userName should be.
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: NetworkImage(user!.photoURL!),
+                  ),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  alignment: Alignment.centerLeft,
+                  child: buildWelcome("Erkam"),               // user.userName should be.
+                ),
+              ],
             ),
           ),
           flexibleSpace: Container(
@@ -49,6 +60,7 @@ class Body extends StatelessWidget {
           ],
         ),
       );
+  }
 }
 
 buildCategories() => Container(

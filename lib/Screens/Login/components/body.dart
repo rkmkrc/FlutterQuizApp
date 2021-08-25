@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz_app/Classes/course.dart';
-import 'package:flutter_quiz_app/Screens/Courses/courses_screen.dart';
 import 'package:flutter_quiz_app/Screens/Login/components/background.dart';
-import 'package:flutter_quiz_app/Screens/Login/components/text_field_container.dart';
+import 'package:flutter_quiz_app/Screens/Login/home_page.dart';
 import 'package:flutter_quiz_app/Screens/Signup/signup_screen.dart';
 import 'package:flutter_quiz_app/components/already_have_an_account_check.dart';
 import 'package:flutter_quiz_app/components/rounded_button.dart';
 import 'package:flutter_quiz_app/components/rounded_input_field.dart';
 import 'package:flutter_quiz_app/components/rounded_password_field.dart';
-import 'package:flutter_quiz_app/constants.dart';
+import 'package:flutter_quiz_app/google_sign_in_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -48,14 +47,17 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "Giriş Yap",
                press: () {
+                 final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                 provider.googleLogin();
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {                        
-                      return CoursesScreen();    // For testing purposes, later should be changed.
+                      return HomePage();    // For testing purposes, later should be changed.
                     },
                   ),
-                );
+                ); 
               },
             ),
             SizedBox(height: size.height * 0.015),

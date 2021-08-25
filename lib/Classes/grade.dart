@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/course.dart';
 
 class Grade{

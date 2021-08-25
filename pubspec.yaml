@@ -33,6 +33,11 @@ dependencies:
   google_fonts: ^2.1.0
   get: ^4.1.4
 
+  #Google Sign in
+  firebase_auth: ^1.1.4
+  google_sign_in: ^5.0.3
+
+  provider: ^5.0.0
   
 
 dev_dependencies:

@@ -3,9 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/question.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
-import 'package:flutter_quiz_app/Screens/Login/login_screen.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/ScoreScreen/score_screen.dart';
-import 'package:flutter_quiz_app/Screens/Welcome/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -27,7 +25,6 @@ class QuestionController extends GetxController
       this.questions; // user.....questions in fact
 
   bool _timeIsUpFlag = false;
-  late int _qnNumberWhenTimeIsUp;
 
   bool _isAnswered = false;
   bool get isAnswered => this._isAnswered;
@@ -116,7 +113,7 @@ class QuestionController extends GetxController
   }
 
   String isGoodResult(){
-    if(numOfCorrectAns > numOfWrongAns){
+    if(numOfCorrectAns > numOfWrongAns && numOfBlankAns <= 2){
       return  "Harika, böyle devam et." ;
     }
     return "Daha iyi olabilirsin.";

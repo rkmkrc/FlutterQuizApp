@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz_app/Classes/course.dart';
 import 'package:flutter_quiz_app/Classes/question.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

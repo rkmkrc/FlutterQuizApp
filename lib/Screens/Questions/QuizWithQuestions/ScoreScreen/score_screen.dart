@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Courses/courses_screen.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/controllers/question_controller.dart';
-import 'package:flutter_quiz_app/constants.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -130,7 +128,7 @@ class ScoreScreen extends StatelessWidget {
                   height: size.height * 0.12,
                 ),
                 Text(
-                  "Kazanılan Puan: ${_questionController.numOfCorrectAns * 10 - (_questionController.numOfWrongAns * 5)}",
+                  "Kazanılan Puan: ${_questionController.numOfCorrectAns * 10 - ((_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)) * 5)}",
                   style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(
                       fontSize: 25,

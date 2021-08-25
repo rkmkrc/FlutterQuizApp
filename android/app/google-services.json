@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213320071175",
+    "project_id": "bilsoftquizapp1",
+    "storage_bucket": "bilsoftquizapp1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213320071175:android:e908dc0fec34f19add12a2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_quiz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213320071175-8p0g8htto21v1arbrs20cftflo2as7aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfJqM5WGVB3h35q99kRNbHELOxuLxv6tU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213320071175-8p0g8htto21v1arbrs20cftflo2as7aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
