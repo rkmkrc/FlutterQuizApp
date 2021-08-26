@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Courses/courses_screen.dart';
+import 'package:flutter_quiz_app/Screens/Login/home_page.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/controllers/question_controller.dart';
+import 'package:flutter_quiz_app/google_sign_in_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ScoreScreen extends StatelessWidget {
   final Test test;
@@ -16,7 +19,9 @@ class ScoreScreen extends StatelessWidget {
         Get.put(QuestionController(test: test, questions: test.questions));
 
     Size size = MediaQuery.of(context).size;
-    return Material(
+    return ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+    child: Material(
       type: MaterialType.transparency,
       child: new Container(
         decoration: BoxDecoration(
@@ -110,20 +115,24 @@ class ScoreScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 14,),
+                    SizedBox(
+                      height: 14,
+                    ),
                   ],
                 ),
-                SizedBox(height: size.height * 0.105,),
+                SizedBox(
+                  height: size.height * 0.105,
+                ),
                 Text(
-                      "\"${_questionController.isGoodResult()}\"",
-                      style: GoogleFonts.comfortaa(
-                        textStyle: TextStyle(
-                          fontSize: 22,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.white,
-                        ),
-                      ),
+                  "\"${_questionController.isGoodResult()}\"",
+                  style: GoogleFonts.comfortaa(
+                    textStyle: TextStyle(
+                      fontSize: 22,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.white,
                     ),
+                  ),
+                ),
                 SizedBox(
                   height: size.height * 0.12,
                 ),
@@ -140,7 +149,14 @@ class ScoreScreen extends StatelessWidget {
                 SizedBox(height: size.height * 0.05),
                 FloatingActionButton(
                   onPressed: () {
-                     Get.to(() => CoursesScreen());
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return HomePage(); // For testing purposes, later should be changed. Decides itself according to user sign in feature.
+                        },
+                      ),
+                    );
                   },
                   child: const Icon(Icons.home),
                   backgroundColor: Colors.black45,
@@ -150,7 +166,7 @@ class ScoreScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
 /*
     return Scaffold(
       
