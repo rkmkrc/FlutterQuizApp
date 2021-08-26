@@ -29,7 +29,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 15),
+                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
                   child: Obx( () => QuestionNumbersWidget(
                     questionsList: test.questions,
                     currentQuestion: test.questions[
@@ -41,7 +41,7 @@ class Body extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                   child: TimerBar(test: test),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: size.width * 0.018),
                 Expanded(
                     child: PageView.builder(
                       physics: NeverScrollableScrollPhysics(),

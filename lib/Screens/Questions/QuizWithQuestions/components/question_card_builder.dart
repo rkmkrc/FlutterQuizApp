@@ -24,7 +24,7 @@ class QuizScreenQuestionCardBuilder extends StatelessWidget {
         test: test, questions: test.questions));
     return Container(
       margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      padding: EdgeInsets.all(kDefaultPadding),
+      padding: EdgeInsets.all(size.width * 0.04),
       decoration: BoxDecoration(
         border: Border.all(
           color: Color(0xFF3F4768),

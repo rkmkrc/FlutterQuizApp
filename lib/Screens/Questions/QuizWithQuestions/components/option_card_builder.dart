@@ -47,8 +47,9 @@ class QuizScreenOptionBuilder extends StatelessWidget {
           return InkWell(
             onTap: press,
             child: Container(
-              margin: EdgeInsets.only(top: kDefaultPadding),
-              width: size.width * 0.7,
+              margin: EdgeInsets.only(top: 12),
+              width: size.width * 0.75,
+              height: size.height * 0.109,
               padding: EdgeInsets.all(kDefaultPadding),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -63,8 +64,8 @@ class QuizScreenOptionBuilder extends StatelessWidget {
                     style: TextStyle(color: getTheRightColor(), fontSize: 16),
                   ),
                   Container(
-                    height: 26,
-                    width: 26,
+                    height: 25,
+                    width: 25,
                     decoration: BoxDecoration(
                       color: getTheRightColor() == kGrayColor
                           ? Colors.transparent

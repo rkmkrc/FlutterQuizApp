@@ -9,7 +9,9 @@ class Body extends StatelessWidget {
   const Body({Key? key, required this.course}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.menu),
           elevation: 0,
@@ -51,14 +53,15 @@ class Body extends StatelessWidget {
             SizedBox(
               height: 0,
             ),
-            buildTestsCategory(),
+            buildTestsCategory(size),
           ],
         ),
       );
+  }
 }
 
-buildTestsCategory() => Container(
-      height: 480, // Must be arranged according to Size parameter. !!
+buildTestsCategory(Size size) => Container(
+      height: size.height * 0.78, // Must be arranged according to Size parameter. !!
       child: GridView.count(
         physics: BouncingScrollPhysics(),
         crossAxisCount: 2,
