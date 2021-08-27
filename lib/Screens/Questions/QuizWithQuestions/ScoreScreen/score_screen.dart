@@ -19,154 +19,156 @@ class ScoreScreen extends StatelessWidget {
         Get.put(QuestionController(test: test, questions: test.questions));
 
     Size size = MediaQuery.of(context).size;
-    return ChangeNotifierProvider(
-      create: (context) => GoogleSignInProvider(),
-    child: Material(
-      type: MaterialType.transparency,
-      child: new Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              test.leftOfTestButtonColorForTest,
-              test.rightOfTestButtonColorForTest
-            ],
-            begin: Alignment.center,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Column(
-              children: <Widget>[
-                SizedBox(
-                  height: size.height * 0.17,
-                ),
-                Container(
-                  margin: EdgeInsets.all(15),
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    "Test Bitti",
-                    style: GoogleFonts.comfortaa(
-                      textStyle: TextStyle(
-                        fontSize: 42,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
+    return new WillPopScope(
+        onWillPop: () async => false,
+        child: ChangeNotifierProvider(
+            create: (context) => GoogleSignInProvider(),
+            child: Material(
+              type: MaterialType.transparency,
+              child: new Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      test.leftOfTestButtonColorForTest,
+                      test.rightOfTestButtonColorForTest
+                    ],
+                    begin: Alignment.center,
+                    end: Alignment.bottomCenter,
                   ),
                 ),
-                SizedBox(height: size.height * 0.035),
-                Row(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Icon(
-                      FontAwesomeIcons.checkCircle,
-                      color: Colors.white,
-                      size: 26,
-                    ),
-                    Text(
-                      " Doğru: ${_questionController.numOfCorrectAns}",
-                      style: GoogleFonts.comfortaa(
-                        textStyle: TextStyle(
-                          fontSize: 22,
-                          //fontStyle: FontStyle.italic,
-                          color: Colors.white,
+                    Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: size.height * 0.17,
                         ),
-                      ),
+                        Container(
+                          margin: EdgeInsets.all(15),
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            "Test Bitti",
+                            style: GoogleFonts.comfortaa(
+                              textStyle: TextStyle(
+                                fontSize: 42,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.035),
+                        Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.checkCircle,
+                              color: Colors.white,
+                              size: 26,
+                            ),
+                            Text(
+                              " Doğru: ${_questionController.numOfCorrectAns}",
+                              style: GoogleFonts.comfortaa(
+                                textStyle: TextStyle(
+                                  fontSize: 22,
+                                  //fontStyle: FontStyle.italic,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15),
+                        Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.timesCircle,
+                              color: Colors.white,
+                              size: 26,
+                            ),
+                            Text(
+                              " Yanlış: ${_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)}",
+                              style: GoogleFonts.comfortaa(
+                                textStyle: TextStyle(
+                                  fontSize: 22,
+                                  //fontStyle: FontStyle.italic,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 14),
+                        Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.mehBlank,
+                              color: Colors.white,
+                              size: 26,
+                            ),
+                            Text(
+                              "  Boş: ${_questionController.numOfBlankAns}",
+                              style: GoogleFonts.comfortaa(
+                                textStyle: TextStyle(
+                                  fontSize: 22,
+                                  //fontStyle: FontStyle.italic,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 14,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: size.height * 0.105,
+                        ),
+                        Text(
+                          "\"${_questionController.isGoodResult()}\"",
+                          style: GoogleFonts.comfortaa(
+                            textStyle: TextStyle(
+                              fontSize: 22,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.12,
+                        ),
+                        Text(
+                          "Kazanılan Puan: ${_questionController.numOfCorrectAns * 10 - ((_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)) * 5)}",
+                          style: GoogleFonts.comfortaa(
+                            textStyle: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.05),
+                        FloatingActionButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return HomePage(); // For testing purposes, later should be changed. Decides itself according to user sign in feature.
+                                },
+                              ),
+                            );
+                          },
+                          child: const Icon(Icons.home),
+                          backgroundColor: Colors.black45,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
-                Row(
-                  children: [
-                    Icon(
-                      FontAwesomeIcons.timesCircle,
-                      color: Colors.white,
-                      size: 26,
-                    ),
-                    Text(
-                      " Yanlış: ${_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)}",
-                      style: GoogleFonts.comfortaa(
-                        textStyle: TextStyle(
-                          fontSize: 22,
-                          //fontStyle: FontStyle.italic,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 14),
-                Row(
-                  children: [
-                    Icon(
-                      FontAwesomeIcons.mehBlank,
-                      color: Colors.white,
-                      size: 26,
-                    ),
-                    Text(
-                      "  Boş: ${_questionController.numOfBlankAns}",
-                      style: GoogleFonts.comfortaa(
-                        textStyle: TextStyle(
-                          fontSize: 22,
-                          //fontStyle: FontStyle.italic,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.105,
-                ),
-                Text(
-                  "\"${_questionController.isGoodResult()}\"",
-                  style: GoogleFonts.comfortaa(
-                    textStyle: TextStyle(
-                      fontSize: 22,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: size.height * 0.12,
-                ),
-                Text(
-                  "Kazanılan Puan: ${_questionController.numOfCorrectAns * 10 - ((_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)) * 5)}",
-                  style: GoogleFonts.comfortaa(
-                    textStyle: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                SizedBox(height: size.height * 0.05),
-                FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return HomePage(); // For testing purposes, later should be changed. Decides itself according to user sign in feature.
-                        },
-                      ),
-                    );
-                  },
-                  child: const Icon(Icons.home),
-                  backgroundColor: Colors.black45,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    ));
+              ),
+            )));
 /*
     return Scaffold(
       
