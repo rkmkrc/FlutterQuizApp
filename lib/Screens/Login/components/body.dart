@@ -49,6 +49,7 @@ class Body extends StatelessWidget {
                press: () {
                  final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
                  provider.googleLogin();
+                 provider.addData(8);
 
                 Navigator.push(
                   context,

@@ -12,46 +12,47 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final user = FirebaseAuth.instance.currentUser;
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.menu),
-        elevation: 0,
-        title: Text("7. Sınıf Oyunları"),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
+    return new WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          appBar: AppBar(
+            leading: Icon(Icons.menu),
+            elevation: 0,
+            title: Text("7. Sınıf Oyunları"),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(width: 10),
-                  CircleAvatar(
-                    radius: size.height * 0.035,
-                    backgroundImage: NetworkImage(user!.photoURL!),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    alignment: Alignment.centerLeft,
-                    child: buildWelcome(user.displayName
-                        .toString()), // user.userName should be.
+                  Row(
+                    children: [
+                      SizedBox(width: 10),
+                      CircleAvatar(
+                        radius: size.height * 0.035,
+                        backgroundImage: NetworkImage(user!.photoURL!),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(16),
+                        alignment: Alignment.centerLeft,
+                        child: buildWelcome(user.displayName
+                            .toString()), // user.userName should be.
+                      ),
+                    ],
                   ),
                 ],
               ),
-              
-            ],
-          ),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.deepPurple, Colors.deepOrange],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
             ),
-          ),
-        ),
-        actions: [
-          TextButton(
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.deepPurple, Colors.deepOrange],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
+              ),
+            ),
+            actions: [
+              TextButton(
                 child: Text(
                   "Çıkış Yap",
                   textAlign: TextAlign.right,
@@ -64,22 +65,22 @@ class Body extends StatelessWidget {
                   provider.logout();
                 },
               ),
-          SizedBox(
-            width: 12,
+              SizedBox(
+                width: 12,
+              ),
+            ],
           ),
-        ],
-      ),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(14),
-        children: [
-          SizedBox(
-            height: 0,
+          body: ListView(
+            physics: BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(14),
+            children: [
+              SizedBox(
+                height: 0,
+              ),
+              buildCategories(),
+            ],
           ),
-          buildCategories(),
-        ],
-      ),
-    );
+        ));
   }
 }
 

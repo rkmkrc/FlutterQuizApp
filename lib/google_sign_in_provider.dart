@@ -1,3 +1,5 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -6,6 +8,16 @@ class GoogleSignInProvider extends ChangeNotifier {
   final googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _user;
   GoogleSignInAccount get user => _user!;
+  
+  
+  late Map usersData;
+  
+  addData(int grade){
+    Map<String,dynamic> demoData = {"name" : "Erkam", "surname" : "Karaca", "grade" : grade};
+
+    CollectionReference collectionReference = FirebaseFirestore.instance.collection("usersData");
+    collectionReference.add(demoData);
+  }
 
   Future googleLogin() async {
     try {
@@ -27,7 +39,7 @@ class GoogleSignInProvider extends ChangeNotifier {
 
     notifyListeners();
   }
-
+  
   Future logout() async {
     await googleSignIn.disconnect();
     FirebaseAuth.instance.signOut();
