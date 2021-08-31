@@ -1,17 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Screens/Widgets/courses_widget.dart';
+import 'package:flutter_quiz_app/Services/auth.dart';
 import 'package:flutter_quiz_app/data/courses.dart';
-import 'package:flutter_quiz_app/google_sign_in_provider.dart';
-import 'package:provider/provider.dart';
+
 
 class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+  final AuthService _auth = AuthService();
+  Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final user = FirebaseAuth.instance.currentUser;
     return new WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -29,12 +28,12 @@ class Body extends StatelessWidget {
                       SizedBox(width: 10),
                       CircleAvatar(
                         radius: size.height * 0.035,
-                        backgroundImage: NetworkImage(user!.photoURL!),
+                       // backgroundImage: NetworkImage(user!.photoURL!),
                       ),
                       Container(
                         padding: EdgeInsets.all(16),
                         alignment: Alignment.centerLeft,
-                        child: buildWelcome(user.displayName
+                        child: buildWelcome("Erkam"
                             .toString()), // user.userName should be.
                       ),
                     ],
@@ -59,10 +58,8 @@ class Body extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
-                onPressed: () {
-                  final provider =
-                      Provider.of<GoogleSignInProvider>(context, listen: false);
-                  provider.logout();
+                onPressed: () async{
+                 await _auth.signOut();
                 },
               ),
               SizedBox(

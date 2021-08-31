@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Courses/courses_screen.dart';
-import 'package:flutter_quiz_app/Screens/Login/home_page.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/controllers/question_controller.dart';
-import 'package:flutter_quiz_app/google_sign_in_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ScoreScreen extends StatelessWidget {
   final Test test;
@@ -21,8 +18,6 @@ class ScoreScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return new WillPopScope(
         onWillPop: () async => false,
-        child: ChangeNotifierProvider(
-            create: (context) => GoogleSignInProvider(),
             child: Material(
               type: MaterialType.transparency,
               child: new Container(
@@ -151,12 +146,16 @@ class ScoreScreen extends StatelessWidget {
                         SizedBox(height: size.height * 0.05),
                         FloatingActionButton(
                           onPressed: () {
+                           
+                        //    provider.addData(8,_questionController.numOfCorrectAns * 10);
+                            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                             
+                            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return HomePage(); // For testing purposes, later should be changed. Decides itself according to user sign in feature.
+                                  return CoursesScreen(); // For testing purposes, later should be changed. Decides itself according to user sign in feature.
                                 },
                               ),
                             );
@@ -169,7 +168,7 @@ class ScoreScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            )));
+            ));
 /*
     return Scaffold(
       
