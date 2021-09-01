@@ -4,6 +4,7 @@ import 'package:flutter_quiz_app/Screens/Login/login_screen.dart';
 import 'package:flutter_quiz_app/Screens/Signup/components/background.dart';
 import 'package:flutter_quiz_app/Screens/Signup/components/or_divider.dart';
 import 'package:flutter_quiz_app/Screens/Signup/components/social_icons.dart';
+import 'package:flutter_quiz_app/Screens/Widgets/loading_widget.dart';
 import 'package:flutter_quiz_app/Services/auth.dart';
 import 'package:flutter_quiz_app/components/already_have_an_account_check.dart';
 import 'package:flutter_quiz_app/components/rounded_button.dart';
@@ -23,6 +24,7 @@ class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
+  bool loading = false;
   // text field state
   String email = '';
   String password = '';
@@ -31,7 +33,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Background(
+    return loading ? Loading() : Background(
       child: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -64,20 +66,25 @@ class _RegisterState extends State<Register> {
                 text: "KAYDOL",
                 press: () async {
                   if (_formKey.currentState!.validate()) {
-                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-                    if(result == null){
-                      setState(() => error = "Lütfen geçerli bir e-posta giriniz.");
+                    setState(() => loading = true);
+                    dynamic result = await _auth.registerWithEmailAndPassword(
+                        email, password);
+                    if (result == null) {
+                      setState(() {
+                        error = "Lütfen geçerli bir e-posta giriniz.";
+                        loading = false;
+                      });
                     }
                   }
                 },
               ),
-              SizedBox(height: 12.0),
+              SizedBox(height: size.height * 0.0025),
               Text(
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 14.0),
               ),
- /*             SizedBox(
-                height: size.height * 0.03,
+              SizedBox(
+                height: size.height * 0.01,
               ),
               AlreadyHaveAnAccountCheck(
                 login: false,
@@ -85,7 +92,7 @@ class _RegisterState extends State<Register> {
                   widget.toggleView();
                 },
               ),
-              OrDivider(),
+              /*             OrDivider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
