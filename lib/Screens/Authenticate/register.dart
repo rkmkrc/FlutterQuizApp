@@ -10,6 +10,7 @@ import 'package:flutter_quiz_app/components/already_have_an_account_check.dart';
 import 'package:flutter_quiz_app/components/rounded_button.dart';
 import 'package:flutter_quiz_app/components/rounded_input_field.dart';
 import 'package:flutter_quiz_app/components/rounded_password_field.dart';
+import 'package:flutter_quiz_app/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Register extends StatefulWidget {
@@ -23,12 +24,13 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-
+  double _currentSliderValue = 2;
   bool loading = false;
   // text field state
   String email = '';
   String password = '';
   String error = '';
+  int grade = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +64,29 @@ class _RegisterState extends State<Register> {
                   setState(() => password = value);
                 },
               ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: Slider(
+                  value: _currentSliderValue, 
+                  min: 2,
+                  max: 8,
+                  divisions: 6,
+                  activeColor: Colors.purple[_currentSliderValue.round() * 100],
+                  inactiveColor: Colors.purple[_currentSliderValue.round() * 100],
+                  label: _currentSliderValue.round().toString()+ ".Sınıf",
+                  onChanged: (val) => setState(() => {
+                    _currentSliderValue = val,
+                    grade = val.round(),
+                    }),
+                ),
+              ),
               RoundedButton(
                 text: "KAYDOL",
                 press: () async {
                   if (_formKey.currentState!.validate()) {
                     setState(() => loading = true);
                     dynamic result = await _auth.registerWithEmailAndPassword(
-                        email, password);
+                        email, password, grade);
                     if (result == null) {
                       setState(() {
                         error = "Lütfen geçerli bir e-posta giriniz.";
