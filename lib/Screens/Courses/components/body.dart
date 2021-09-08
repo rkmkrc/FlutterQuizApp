@@ -1,23 +1,46 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Screens/Widgets/courses_widget.dart';
 import 'package:flutter_quiz_app/Services/auth.dart';
 import 'package:flutter_quiz_app/data/courses.dart';
+import 'package:provider/provider.dart';
 
-
-class Body extends StatelessWidget {
-  final AuthService _auth = AuthService();
+class Body extends StatefulWidget {
   Body({Key? key}) : super(key: key);
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final users = Provider.of<QuerySnapshot?>(context);
+
+    int userGradeFromDatabase = 2;
+    String userNameFromDatabase = "";
+    int userPointsFromDatabase = 0;
+
+    if (users != null) {
+      for (var doc in users.docs) {
+        if (doc.id == _auth.getUserUidFromAuthService()) {
+          userGradeFromDatabase = doc.get("grade");
+          userNameFromDatabase = doc.get("username");
+          userPointsFromDatabase = doc.get("points");
+        }
+      }
+    }
+
     return new WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
           appBar: AppBar(
             leading: Icon(Icons.menu),
             elevation: 0,
-            title: Text("7. Sınıf Oyunları"),
+            title: Text(userGradeFromDatabase.toString() + ". Sınıf Oyunları"),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(50),
               child: Row(
@@ -25,19 +48,21 @@ class Body extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: 10),
-                      CircleAvatar(
+                      //SizedBox(width: 10),
+                      /*   CircleAvatar(
                         radius: size.height * 0.035,
-                       // backgroundImage: NetworkImage(user!.photoURL!),
+                        // backgroundImage: NetworkImage(user!.photoURL!),
                       ),
+                    */
                       Container(
                         padding: EdgeInsets.all(16),
                         alignment: Alignment.centerLeft,
-                        child: buildWelcome("Erkam"
+                        child: buildWelcome(userNameFromDatabase
                             .toString()), // user.userName should be.
                       ),
                     ],
                   ),
+                  buildUserXP(userPointsFromDatabase),
                 ],
               ),
             ),
@@ -58,8 +83,8 @@ class Body extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
-                onPressed: () async{
-                 await _auth.signOut();
+                onPressed: () async {
+                  await _auth.signOut();
                 },
               ),
               SizedBox(
@@ -114,17 +139,30 @@ buildWelcome(String userName) => Column(
       ],
     );
 
-buildUserXP(String userName) => Column(
-      // There must be user later handle it.
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(
-          "100 XP", //user.points
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+buildUserXP(int userPointsFromDatabase) => Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        // There must be user later handle it.
+
+        crossAxisAlignment: CrossAxisAlignment.end,
+
+        children: [
+          Text(
+            userPointsFromDatabase.toString(), //user.points
+
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-      ],
+          Text(
+            "XP",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
+          ),
+        ],
+      ),
     );

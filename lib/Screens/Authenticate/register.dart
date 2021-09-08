@@ -27,6 +27,7 @@ class _RegisterState extends State<Register> {
   double _currentSliderValue = 2;
   bool loading = false;
   // text field state
+  String username = '';
   String email = '';
   String password = '';
   String error = '';
@@ -49,10 +50,17 @@ class _RegisterState extends State<Register> {
               SizedBox(
                 height: size.height * 0.03,
               ),
-              SvgPicture.asset(
+    /*          SvgPicture.asset(
                 "assets/icons/signup.svg",
                 height: size.height * 0.3,
               ),
+    */        RoundedInputField(
+                hintText: "Kullanıcı Adı",
+                onChanged: (value) {
+                  setState(() => username = value);
+                },
+              ),
+    
               RoundedInputField(
                 hintText: "Email",
                 onChanged: (value) {
@@ -74,6 +82,7 @@ class _RegisterState extends State<Register> {
                   activeColor: Colors.purple[_currentSliderValue.round() * 100],
                   inactiveColor: Colors.purple[_currentSliderValue.round() * 100],
                   label: _currentSliderValue.round().toString()+ ".Sınıf",
+                  
                   onChanged: (val) => setState(() => {
                     _currentSliderValue = val,
                     grade = val.round(),
@@ -85,7 +94,7 @@ class _RegisterState extends State<Register> {
                 press: () async {
                   if (_formKey.currentState!.validate()) {
                     setState(() => loading = true);
-                    dynamic result = await _auth.registerWithEmailAndPassword(
+                    dynamic result = await _auth.registerWithEmailAndPassword(username,
                         email, password, grade);
                     if (result == null) {
                       setState(() {

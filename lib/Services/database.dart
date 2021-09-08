@@ -7,11 +7,16 @@ class DatabaseService{
 
   final CollectionReference userCollection = FirebaseFirestore.instance.collection("users");
 
-  Future updateUserData(int grade, int points) async{
+  Future updateUserData(String username, int grade, int points) async{
     
     return await userCollection.doc(uid).set({
+      "username" : username,
       "grade" : grade,
       "points": points,
     });
+  }
+
+  Stream<QuerySnapshot> get users {
+    return userCollection.snapshots();
   }
 }

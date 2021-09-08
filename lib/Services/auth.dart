@@ -5,7 +5,10 @@ import 'package:flutter_quiz_app/Services/database.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //create user obj based on FirebaseUser
-
+  
+  String? getUserUidFromAuthService(){
+    return _auth.currentUser?.uid.toString();
+  }
   UserClass _userFromFirebaseUser(User user){   
     return UserClass(uid: user.uid);
   }
@@ -44,12 +47,12 @@ class AuthService {
 
   //register with email and passworrd
 
-  Future registerWithEmailAndPassword(String email, String password, int grade) async{
+  Future registerWithEmailAndPassword(String username, String email, String password, int grade) async{
     try{
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
 
-      await DatabaseService(uid: user!.uid).updateUserData(grade, 0);
+      await DatabaseService(uid: user!.uid).updateUserData(username, grade, 0);
 
       return _userFromFirebaseUser(user); 
     }catch(e){
