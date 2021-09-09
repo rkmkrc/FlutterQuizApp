@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
-import 'package:flutter_quiz_app/data/questions.dart';
+import 'package:flutter_quiz_app/data/questions2.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final scienceTests = <Test>[
   Test(
-    questions: questions,
+    questions: questions2,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/physics.png',
     testName: 'Atom',
@@ -19,7 +19,7 @@ final scienceTests = <Test>[
     rightOfTestButtonColorForTest: Colors.orange.shade400,
   ),
   Test(
-    questions: questions,
+    questions: questions2,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/chemistry.png',
     testName: 'İş ve Enerji',
@@ -32,7 +32,7 @@ final scienceTests = <Test>[
     rightOfTestButtonColorForTest: Colors.orange.shade400,
   ),
   Test(
-    questions: questions,
+    questions: questions2,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/maths.png',
     testName: 'Elektrik',
@@ -45,7 +45,7 @@ final scienceTests = <Test>[
     rightOfTestButtonColorForTest: Colors.orange.shade400,
   ),
   Test(
-    questions: questions,
+    questions: questions2,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/biology.png',
     testName: 'Duyu Organları',

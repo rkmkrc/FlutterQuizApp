@@ -5,11 +5,12 @@ import 'package:flutter_quiz_app/Services/database.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //create user obj based on FirebaseUser
-  
-  String? getUserUidFromAuthService(){
-    return _auth.currentUser?.uid.toString();
+
+  String? getUserUidFromAuthService() {
+    return _auth.currentUser?.uid;
   }
-  UserClass _userFromFirebaseUser(User user){   
+
+  UserClass _userFromFirebaseUser(User user) {
     return UserClass(uid: user.uid);
   }
   //auth change user stream
@@ -28,18 +29,19 @@ class AuthService {
       return _userFromFirebaseUser(user!);
     } catch (e) {
       print(e.toString());
-      return null ;
+      return null;
     }
   }
 
   //sign in with email and password
 
-  Future signInWithEmailAndPassword(String email, String password) async{
-    try{
-      UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       User? user = result.user;
-      return _userFromFirebaseUser(user!); 
-    }catch(e){
+      return _userFromFirebaseUser(user!);
+    } catch (e) {
       print(e.toString());
       return null;
     }
@@ -47,15 +49,17 @@ class AuthService {
 
   //register with email and passworrd
 
-  Future registerWithEmailAndPassword(String username, String email, String password, int grade) async{
-    try{
-      UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+  Future registerWithEmailAndPassword(
+      String username, String email, String password, int grade) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       User? user = result.user;
 
       await DatabaseService(uid: user!.uid).updateUserData(username, grade, 0);
 
-      return _userFromFirebaseUser(user); 
-    }catch(e){
+      return _userFromFirebaseUser(user);
+    } catch (e) {
       print(e.toString());
       return null;
     }
@@ -63,10 +67,22 @@ class AuthService {
 
   //sign out
 
-  Future signOut() async{
-    try{
+  Future signOut() async {
+    try {
       return await _auth.signOut();
-    }catch(e){
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  //update user data
+
+  Future updateUserPointsFromAuthService(
+      String username, int grade, int points) async {
+    try {
+      await DatabaseService(uid: _auth.currentUser!.uid.toString())
+          .updateUserData(username, grade, points);
+    } catch (e) {
       print(e.toString());
     }
   }

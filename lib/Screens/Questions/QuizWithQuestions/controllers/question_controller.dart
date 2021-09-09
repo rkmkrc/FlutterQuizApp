@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/question.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/ScoreScreen/score_screen.dart';
+import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/ScoreScreen/score_screen_body.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -104,6 +105,7 @@ class QuestionController extends GetxController
      // _animationController.reset(); // Time does not supposed to be reset itself.
      // _animationController.forward(); // Commented in order to go to the score screen whenever time is up.
     } else {
+      _animationController.reset();
       Get.to(() => ScoreScreen(test: test,));
     }
   }
