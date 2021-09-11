@@ -195,6 +195,8 @@ class _ScoreScreenBodyState extends State<ScoreScreenBody> {
                                 },
                               ),
                             );*/
+                           // ignore: invalid_use_of_protected_member
+                           
                            Navigator.pop(context);
                            Navigator.pop(context);
                            Navigator.pop(context);

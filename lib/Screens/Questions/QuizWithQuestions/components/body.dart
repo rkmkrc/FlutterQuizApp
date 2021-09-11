@@ -17,6 +17,10 @@ class Body extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     QuestionController _questionController = Get.put(QuestionController(
         questions: test.questions, test: test));
+    _questionController.resetAnimationAndStatisticalData();
+    _questionController.onInit();
+    test.questions.shuffle();
+    
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,

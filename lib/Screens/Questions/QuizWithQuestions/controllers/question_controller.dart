@@ -114,6 +114,14 @@ class QuestionController extends GetxController
     _questionNumber.value = index + 1 ;
   }
 
+  void resetAnimationAndStatisticalData(){
+    _animationController.reset();
+    updateQuestionNumber(0);
+    _numOfBlankAns = 0;
+    _numOfCorrectAns = 0;
+    _numOfCorrectAns = 0;
+  }
+
   String isGoodResult(){
     if(numOfCorrectAns > numOfWrongAns && numOfBlankAns <= 2){
       return  "Harika, böyle devam et." ;

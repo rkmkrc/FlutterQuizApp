@@ -5,6 +5,7 @@ import 'package:flutter_quiz_app/Screens/Courses/components/body.dart';
 import 'package:flutter_quiz_app/Screens/Widgets/tests_widget.dart';
 import 'package:flutter_quiz_app/Services/auth.dart';
 import 'package:flutter_quiz_app/data/mathTests.dart';
+import 'package:flutter_quiz_app/data/scienceTests.dart';
 import 'package:provider/provider.dart';
 
 class Body extends StatefulWidget {
@@ -93,6 +94,6 @@ buildTestsCategory(Size size) => Container(
         childAspectRatio: 3 / 3,
         crossAxisSpacing: 18,
         mainAxisSpacing: 18,
-        children: mathTests.map((test) => TestsWidget(test: test)).toList(),
+        children: mathTests.map((test) => TestsWidget(test: test)).toList(),    // !!!!!!!
       ),
     );
