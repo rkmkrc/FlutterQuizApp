@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/data/questions.dart';
+import 'package:flutter_quiz_app/data/questionsUslu.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final mathTests = <Test>[
@@ -58,7 +59,7 @@ final mathTests = <Test>[
     rightOfTestButtonColorForTest: Colors.blue.shade400,
   ),
   Test(
-    questions: questions,
+    questions: questionsUslu,
     parentCourseOfTest: 'Matematik',
     imageUrl: 'assets/physics.png',
     testName: 'Üslü Sayılar',

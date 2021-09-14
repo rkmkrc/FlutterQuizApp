@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/question.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/ScoreScreen/score_screen.dart';
-import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/ScoreScreen/score_screen_body.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -12,18 +11,19 @@ class QuestionController extends GetxController
     with SingleGetTickerProviderMixin {
   late AnimationController _animationController;
   late Animation _animation;
-  final Test test;
-  final List<Question> questions;
-
-  QuestionController({required this.questions, required this.test});
-
+  Test test;
+ // final List<Question> questions;
+  
+  QuestionController({ required this.test});
+  
   Animation get animation => this._animation;
 
   late PageController _pageController;
   PageController get pageController => this._pageController;
-
+  
+  
   List<Question> get getQuestions =>
-      this.questions; // user.....questions in fact
+      test.questions; // user.....questions in fact
 
   bool _timeIsUpFlag = false;
 
@@ -51,6 +51,7 @@ class QuestionController extends GetxController
   
   @override
   void onInit() {
+    print("Test name OnInit :  "+test.testName + "---"  "Duration: "+test.durationForTest.toString());
     _animationController = AnimationController(
         duration: Duration(seconds: test.durationForTest), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
@@ -60,12 +61,14 @@ class QuestionController extends GetxController
     _animationController.forward().whenComplete(() => {
         _timeIsUpFlag = true,
         blankAnswerCounter(),
-        Get.to(() => ScoreScreen(test: test,))
+        Get.to(() => ScoreScreen(test: test,),
+        ),
     });
 
     _pageController = PageController();
 
     super.onInit();
+    update();
   }
 
   @override
@@ -76,11 +79,11 @@ class QuestionController extends GetxController
   }
   void blankAnswerCounter(){
     if(_timeIsUpFlag){
-      _numOfBlankAns = questions.length - _questionNumber.value + 1;
-      _numOfWrongAns = questions.length - _numOfCorrectAns - _numOfBlankAns ;
+      _numOfBlankAns = test.questions.length - _questionNumber.value + 1;
+      _numOfWrongAns = test.questions.length - _numOfCorrectAns - _numOfBlankAns ;
     }
     else{_numOfBlankAns = 0;
-    _numOfWrongAns = questions.length - _numOfCorrectAns - _numOfBlankAns ;} 
+    _numOfWrongAns = test.questions.length - _numOfCorrectAns - _numOfBlankAns ;} 
   }
 
   void checkAnswer(Question question, int selectedIndex) {
@@ -98,7 +101,7 @@ class QuestionController extends GetxController
   }
 
   void nextQuestion() {
-    if (_questionNumber.value != questions.length) {
+    if (_questionNumber.value != test.questions.length) {
       _isAnswered = false;
       _pageController.nextPage(
           duration: Duration(milliseconds: 250), curve: Curves.ease);
@@ -115,11 +118,13 @@ class QuestionController extends GetxController
   }
 
   void resetAnimationAndStatisticalData(){
+  //  Get.reset();
     _animationController.reset();
     updateQuestionNumber(0);
     _numOfBlankAns = 0;
     _numOfCorrectAns = 0;
     _numOfCorrectAns = 0;
+    update();
   }
 
   String isGoodResult(){

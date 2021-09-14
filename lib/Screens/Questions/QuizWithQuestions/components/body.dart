@@ -8,19 +8,33 @@ import 'package:flutter_quiz_app/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   final Test test;
   const Body({Key? key, required this.test}) : super(key: key);
 
   @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
   Widget build(BuildContext context) {
+    setState(() {});
     Size size = MediaQuery.of(context).size;
-    QuestionController _questionController = Get.put(QuestionController(
-        questions: test.questions, test: test));
+    print(
+        "*/*/*/*/*/*/*/*/*/*/*/*/*/*/  Above of Controller. */*/*/*/*/*/*/*/*/*/*/*/*/*/");
+    print("Test name  :  " +
+        widget.test.testName +
+        " --- Duration: " +
+        widget.test.durationForTest.toString());
+
+    QuestionController _questionController =
+        Get.put(QuestionController(test: widget.test));
+
     _questionController.resetAnimationAndStatisticalData();
     _questionController.onInit();
-    test.questions.shuffle();
-    
+    widget.test.questions.shuffle();
+
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -33,32 +47,38 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
-                  child: Obx( () => QuestionNumbersWidget(
-                    questionsList: test.questions,
-                    currentQuestion: test.questions[
-                        _questionController.questionNumber.value-1], // Update currentQue. all the time to change highlighted num.
-                  ),)
-                ),
+                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+                    child: Obx(
+                      () => QuestionNumbersWidget(
+                        questionsList: widget.test.questions,
+                        currentQuestion: widget
+                            .test.questions[_questionController
+                                .questionNumber.value -
+                            1], // Update currentQue. all the time to change highlighted num.
+                      ),
+                    )),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                  child: TimerBar(test: test),
+                  child: TimerBar(test: widget.test),
                 ),
                 SizedBox(height: size.width * 0.018),
                 Expanded(
                     child: PageView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      controller: _questionController.pageController,
-                      onPageChanged: _questionController.updateQuestionNumber,
-                      itemCount: _questionController.questions.length,
-                  itemBuilder: (context, index) =>
-                      QuizScreenQuestionCardBuilder(
-                    test: test,
-                    size: size,
-                    question: _questionController.questions[index],
-                  ),
-                ))
+                        physics: NeverScrollableScrollPhysics(),
+                        controller: _questionController.pageController,
+                        onPageChanged: _questionController.updateQuestionNumber,
+                        itemCount: _questionController.test.questions.length,
+                        itemBuilder: (context, index) {
+                          print("QSB Before :::::::::::  " +
+                              widget.test.testName +
+                              " :::::::::::::");
+                          return QuizScreenQuestionCardBuilder(
+                            test: widget.test,
+                            size: size,
+                            question: _questionController.test.questions[index],
+                          );
+                        }))
 
                 //QuizScreenOptionBuilder(size: size),  // if u want seperate options from image
               ],

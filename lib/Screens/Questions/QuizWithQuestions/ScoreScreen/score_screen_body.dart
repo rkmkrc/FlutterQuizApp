@@ -23,7 +23,7 @@ class _ScoreScreenBodyState extends State<ScoreScreenBody> {
   @override
   Widget build(BuildContext context) {
     QuestionController _questionController =
-        Get.put(QuestionController(test: widget.test, questions: widget.test.questions));
+        Get.put(QuestionController(test: widget.test,));
 
     Size size = MediaQuery.of(context).size;
 
@@ -44,7 +44,7 @@ class _ScoreScreenBodyState extends State<ScoreScreenBody> {
     }
 
    int earnedPoints = _questionController.numOfCorrectAns * 10 
-    - ((_questionController.questions.length 
+    - ((_questionController.test.questions.length 
     - (_questionController.numOfCorrectAns 
     + _questionController.numOfBlankAns)) * 5);
 
@@ -115,7 +115,7 @@ class _ScoreScreenBodyState extends State<ScoreScreenBody> {
                               size: 26,
                             ),
                             Text(
-                              " Yanlış: ${_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)}",
+                              " Yanlış: ${_questionController.test.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)}",
                               style: GoogleFonts.comfortaa(
                                 textStyle: TextStyle(
                                   fontSize: 22,
@@ -166,7 +166,7 @@ class _ScoreScreenBodyState extends State<ScoreScreenBody> {
                           height: size.height * 0.12,
                         ),
                         Text(
-                          "Kazanılan Puan: ${_questionController.numOfCorrectAns * 10 - ((_questionController.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)) * 5)}",
+                          "Kazanılan Puan: ${_questionController.numOfCorrectAns * 10 - ((_questionController.test.questions.length - (_questionController.numOfCorrectAns + _questionController.numOfBlankAns)) * 5)}",
                           style: GoogleFonts.comfortaa(
                             textStyle: TextStyle(
                               fontSize: 25,
@@ -196,10 +196,13 @@ class _ScoreScreenBodyState extends State<ScoreScreenBody> {
                               ),
                             );*/
                            // ignore: invalid_use_of_protected_member
-                           
+                       //    _questionController.pageController.removeListener(() { });
+                          
                            Navigator.pop(context);
                            Navigator.pop(context);
                            Navigator.pop(context);
+                           Navigator.pop(context);
+                    
                           },
                           child: const Icon(Icons.home),
                           backgroundColor: Colors.black45,

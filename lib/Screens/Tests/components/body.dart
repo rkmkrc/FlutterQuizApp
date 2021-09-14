@@ -11,12 +11,13 @@ import 'package:provider/provider.dart';
 class Body extends StatefulWidget {
   final Course course;
   const Body({Key? key, required this.course}) : super(key: key);
-
+  
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
+  
    final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
@@ -79,14 +80,14 @@ class _BodyState extends State<Body> {
             SizedBox(
               height: 0,
             ),
-            buildTestsCategory(size),
+            buildTestsCategory(size, widget.course),
           ],
         ),
       );
   }
 }
 
-buildTestsCategory(Size size) => Container(
+buildTestsCategory(Size size, Course course) => Container(
       height: size.height * 0.78, // Must be arranged according to Size parameter. !!
       child: GridView.count(
         physics: BouncingScrollPhysics(),
@@ -94,6 +95,6 @@ buildTestsCategory(Size size) => Container(
         childAspectRatio: 3 / 3,
         crossAxisSpacing: 18,
         mainAxisSpacing: 18,
-        children: mathTests.map((test) => TestsWidget(test: test)).toList(),    // !!!!!!!
+        children: course.testList.map((test) => TestsWidget(test: test)).toList(),    // !!!!!!!
       ),
     );

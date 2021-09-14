@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/Classes/test.dart';
 import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/components/body.dart';
 
-class QuizWithQuestionsScreen extends StatelessWidget {
+class QuizWithQuestionsScreen extends StatefulWidget {
   final Test test;
   const QuizWithQuestionsScreen({Key? key, required this.test})
       : super(key: key);
 
+  @override
+  _QuizWithQuestionsScreenState createState() => _QuizWithQuestionsScreenState();
+}
+
+class _QuizWithQuestionsScreenState extends State<QuizWithQuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     return new WillPopScope(
@@ -22,7 +27,7 @@ class QuizWithQuestionsScreen extends StatelessWidget {
         TextButton(onPressed: () {}, child: Text("GEÇ", style: TextStyle(color: Colors.white),),),
         ],
       ),*/
-          body: Body(test: test),
+          body: Body(test: widget.test),
         ));
   }
 }

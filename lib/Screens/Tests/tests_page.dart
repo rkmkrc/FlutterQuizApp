@@ -5,18 +5,23 @@ import 'package:flutter_quiz_app/Screens/Tests/components/body.dart';
 import 'package:flutter_quiz_app/Services/database.dart';
 import 'package:provider/provider.dart';
 
-class TestsScreen extends StatelessWidget {
+class TestsScreen extends StatefulWidget {
   final Course course;
 
   const TestsScreen({ Key? key,required this.course }) : super(key: key);
 
+  @override
+  _TestsScreenState createState() => _TestsScreenState();
+}
+
+class _TestsScreenState extends State<TestsScreen> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<QuerySnapshot?>.value(
       initialData: null,
       value: DatabaseService(uid: ' ').users,
       child: Scaffold(
-        body: Body(course: course),
+        body: Body(course: widget.course),
       ),
     );
   }

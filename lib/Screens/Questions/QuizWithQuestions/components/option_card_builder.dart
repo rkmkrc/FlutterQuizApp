@@ -26,7 +26,7 @@ class QuizScreenOptionBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<QuestionController>(
         init: QuestionController(
-            test: test, questions: test.questions),
+            test: test),
         builder: (qnController) {
           Color getTheRightColor() {
             if (qnController.isAnswered) {

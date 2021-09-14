@@ -4,27 +4,32 @@ import 'package:flutter_quiz_app/Classes/course.dart';
 import 'package:flutter_quiz_app/Screens/Tests/tests_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CoursesWidget extends StatelessWidget {
+class CoursesWidget extends StatefulWidget {
   final Course course;
 
   const CoursesWidget({Key? key, required this.course}) : super(key: key);
 
   @override
+  _CoursesWidgetState createState() => _CoursesWidgetState();
+}
+
+class _CoursesWidgetState extends State<CoursesWidget> {
+  @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TestsScreen(course: course),
+          builder: (context) => TestsScreen(course: widget.course),
         )),
         child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: course.backgroundColor,
+            color: widget.course.backgroundColor,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FaIcon(
-                course.courseIcon,
+                widget.course.courseIcon,
                 color: Colors.white,
                 size: 36,
               ),
@@ -32,7 +37,7 @@ class CoursesWidget extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                course.courseName,
+                widget.course.courseName,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

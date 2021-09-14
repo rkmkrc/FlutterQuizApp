@@ -25,7 +25,7 @@ class TimerBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
       ),
       child: GetBuilder<QuestionController>(
-        init: QuestionController(test: test, questions: test.questions),
+        init: QuestionController(test: test),
         builder: (controller) {
           print(controller.animation.value);
           return Stack(

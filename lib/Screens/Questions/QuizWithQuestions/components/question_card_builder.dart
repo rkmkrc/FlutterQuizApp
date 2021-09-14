@@ -6,7 +6,7 @@ import 'package:flutter_quiz_app/Screens/Questions/QuizWithQuestions/controllers
 import 'package:flutter_quiz_app/constants.dart';
 import 'package:get/get.dart';
 
-class QuizScreenQuestionCardBuilder extends StatelessWidget {
+class QuizScreenQuestionCardBuilder extends StatefulWidget {
   const QuizScreenQuestionCardBuilder({
     Key? key,
     required this.test,
@@ -19,12 +19,17 @@ class QuizScreenQuestionCardBuilder extends StatelessWidget {
   final Size size;
 
   @override
+  _QuizScreenQuestionCardBuilderState createState() => _QuizScreenQuestionCardBuilderState();
+}
+
+class _QuizScreenQuestionCardBuilderState extends State<QuizScreenQuestionCardBuilder> {
+  @override
   Widget build(BuildContext context) {
     QuestionController _controller = Get.put(QuestionController(
-        test: test, questions: test.questions));
+        test: widget.test));
     return Container(
       margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      padding: EdgeInsets.all(size.width * 0.04),
+      padding: EdgeInsets.all(widget.size.width * 0.04),
       decoration: BoxDecoration(
         border: Border.all(
           color: Color(0xFF3F4768),
@@ -36,17 +41,17 @@ class QuizScreenQuestionCardBuilder extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            question.imageUrl,
-            height: size.height * 0.295,
+            widget.question.imageUrl,
+            height: widget.size.height * 0.295,
           ),
           ...List.generate(
-            question.options.length,
+            widget.question.options.length,
             (index) => QuizScreenOptionBuilder(
               // index 0 1 2 3 4 ...
-              size: size,
-              text: question.options[index].text,
-              code: question.options[index].code,
-              press: () => _controller.checkAnswer(question, index), test: test, index: index,
+              size: widget.size,
+              text: widget.question.options[index].text,
+              code: widget.question.options[index].code,
+              press: () => _controller.checkAnswer(widget.question, index), test: widget.test, index: index,
             ),
           ),
         ],
