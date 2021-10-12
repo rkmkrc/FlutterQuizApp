@@ -1,16 +1,13 @@
 # flutter_quiz_app
 
-A new Flutter project.
+During the 2021 summer I worked on an android based mobile game. I have used Flutter/Dart. I made a quiz
+game that appeals to secondary school students from scratch. In the application, there are Login Screen,
+Main Category Screen, Test Screen, Score Screen and there are several quizzes from Math, Literature, etc.
+When the user completes the quiz he/she earns points. I gained a lot of experience in Front-end, Back-end,
+OOP, Flutter Framework, Firebase/Firestore, and also Clean Code concept.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_1631719100](https://user-images.githubusercontent.com/42948198/136916541-b1a874fc-7827-421c-9349-9386831dac30.png)
+![Screenshot_1631723740](https://user-images.githubusercontent.com/42948198/136916618-f8beda36-3a68-4116-a0c8-9b7be24f24c2.png)
+![Screenshot_1631977581](https://user-images.githubusercontent.com/42948198/136916725-288744ea-fb82-49e1-b0d4-f12da1b7ea74.png)
+![Screenshot_1631796487](https://user-images.githubusercontent.com/42948198/136916786-01ecd69f-237f-41e2-b450-8c50e163bd27.png)
+![Screenshot_1631884075](https://user-images.githubusercontent.com/42948198/136916818-c12ec0e2-1d52-4cc0-8db0-90cb6e0c53f4.png)
