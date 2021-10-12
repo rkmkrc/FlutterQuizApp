@@ -6,8 +6,12 @@ Main Category Screen, Test Screen, Score Screen and there are several quizzes fr
 When the user completes the quiz he/she earns points. I gained a lot of experience in Front-end, Back-end,
 OOP, Flutter Framework, Firebase/Firestore, and also Clean Code concept.
 
-![Screenshot_1631719100](https://user-images.githubusercontent.com/42948198/136916541-b1a874fc-7827-421c-9349-9386831dac30.png)
-![Screenshot_1631723740](https://user-images.githubusercontent.com/42948198/136916618-f8beda36-3a68-4116-a0c8-9b7be24f24c2.png)
-![Screenshot_1631977581](https://user-images.githubusercontent.com/42948198/136916725-288744ea-fb82-49e1-b0d4-f12da1b7ea74.png)
-![Screenshot_1631796487](https://user-images.githubusercontent.com/42948198/136916786-01ecd69f-237f-41e2-b450-8c50e163bd27.png)
-![Screenshot_1631884075](https://user-images.githubusercontent.com/42948198/136916818-c12ec0e2-1d52-4cc0-8db0-90cb6e0c53f4.png)
+![image](https://user-images.githubusercontent.com/42948198/136917268-f141129f-9cb1-4f39-a720-75cfb14e3b50.png)
+
+![image](https://user-images.githubusercontent.com/42948198/136917545-36a89178-ed8d-4e9e-b9cf-3937455bf7f7.png)
+![image](https://user-images.githubusercontent.com/42948198/136917619-a52349eb-14b1-4a96-82dc-7040eab2e71f.png)
+![image](https://user-images.githubusercontent.com/42948198/136917676-ff509eca-e96b-4497-8ff6-2bc7e2349c60.png)
+![image](https://user-images.githubusercontent.com/42948198/136917755-c3d4fba5-9dde-4cc3-a322-0e4d7881cc30.png)
+![image](https://user-images.githubusercontent.com/42948198/136917931-91c7be31-4964-4f3b-bdfd-4f09075c55b1.png)
+![image](https://user-images.githubusercontent.com/42948198/136917987-71aeece3-78f8-489d-8d7d-8b0278b32a44.png)
+![image](https://user-images.githubusercontent.com/42948198/136917855-43bc07f8-8067-4066-a516-378fe8189c2c.png)
