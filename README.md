@@ -6,6 +6,11 @@ Main Category Screen, Test Screen, Score Screen and there are several quizzes fr
 When the user completes the quiz he/she earns points. I gained a lot of experience in Front-end, Back-end,
 OOP, Flutter Framework, Firebase/Firestore, and also Clean Code concept.
 
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/42948198/142670304-f06f1417-e5c1-4782-b331-7ba797c8f09b.gif)
+![ezgif com-gif-maker (1) (1)](https://user-images.githubusercontent.com/42948198/142670313-28b49dff-66a2-415d-adb1-d7d05ed50d3d.gif)
+![ezgif com-gif-maker (2) (1)](https://user-images.githubusercontent.com/42948198/142670387-ac66cd8a-6913-45ee-b76a-73e3c8685416.gif)
+
+
 ![image](https://user-images.githubusercontent.com/42948198/136917268-f141129f-9cb1-4f39-a720-75cfb14e3b50.png)
 
 ![image](https://user-images.githubusercontent.com/42948198/136917545-36a89178-ed8d-4e9e-b9cf-3937455bf7f7.png)
